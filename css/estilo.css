@@ -8,33 +8,49 @@
                           'rodape formulario';
     height:100vh;
     font-family:arial;
-    color: #fff;
+    color:#fff;
 }
 
 /* CABEÇALHO */
 header{grid-area:cabecalho;}
 .logo{display:flex; align-items: center; padding:10px 30px;}
 .logo img{width:80px;}
-.logo h1{font-family: verdana; color:#274083;}
+.logo h1{font-family:verdana; color:#274083;}
 
 /* PRINCIPAL */
-main{grid-area:principal; background:linear-gradient(to right, #48a0df, #274083); display: flex; align-items: center; padding: 2% 0 2% 50px; line-height: 1cm;}
+main{grid-area:principal; background:linear-gradient(to right, #48a0df, #274083); display:flex; align-items: center; padding:2% 0 2% 50px; line-height: 1cm;}
 main figure img{width:100%;}
-main figure {width: 200px; margin-right:20%;}
-main h1{font-size: 40px; width: 70%; margin-bottom: 30px; line-height: 1.5cm;}
+main figure{width:200px; margin-right:20%;}
+main h1{font-size:40px; width:70%; margin-bottom:30px; line-height: 1.5cm;}
 main h3{width:80%;}
 /*FORMULÁRIO */
-aside{grid-area:formulario; background-color: #274083;
-padding-top: 30px; text-align: center;}
-aside form{width: 90%; padding-top: 30px; margin: 0 auto; display: flex; 
-flex-direction: column;}
+aside{grid-area:formulario; background-color: #274083; padding-top:30px; text-align:center;}
+aside form{width:90%; padding-top:30px; margin:0 auto; display:flex; flex-direction: column; row-gap:30px;}
 
-aside input, select{width: 100%; padding: 15px; font-size: 16px;
-margin-bottom: 10px; border: none;}
-
+aside input, select{width:100%; padding:15px; font-size:16px; margin-bottom:10px; border:none;}
+aside input[type=submit]{background-color: #11dd2c; font-weight:bold; padding: 20px 0; cursor:pointer; transition:all 0.2s linear;}
+ 
+/*EFEITOS*/
+form :where(input,select):focus{outline:3px solid #48a0df;}
+form input[type=submit]:hover{box-shadow: 0 0 20px #fff; transition:all 0.2s linear;}
 /*RODAPÉ */
-footer{grid-area:rodape; background-color: #ccc; color: #274083;
-padding:30px; display:flex;}
+footer{grid-area:rodape; background-color: #ccc; color:#274083; padding:30px; display:flex;}
 footer section{margin:0 20px;}
 footer .rodape-titulo{margin-bottom:20px;}
-footer .rodape-conteudo{line-height: 0.7cm;}
+footer .rodape-conteudo{line-height:0.7cm;}
+
+/*RESPONSIVIDADE*/
+@media screen and (max-width:1200px){
+    .principal{
+        grid-template-columns: 100%;
+        grid-template-areas:
+        'cabecalho'
+        'principal'
+        'rodape'
+        'formulario';
+    }
+    main{height:50vh}
+    main h1, main h3{width:100%;}
+    main figure{margin:0 5%}
+    aside input[type=submit]{font-size:20px;}
+}
